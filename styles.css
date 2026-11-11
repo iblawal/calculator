@@ -1,0 +1,152 @@
+:root {
+  --body-bg: #e9e6df;
+  --body-text: #1f2a2e;
+  --shell: #2b3a3f;
+  --display-bg: #c9d6c1;
+  --display-text: #1d2a22;
+  --display-muted: #55655a;
+  --key-bg: #f6f4ef;
+  --key-text: #1f2a2e;
+  --key-fn-bg: #d8d3c8;
+  --key-op-bg: #3f6b73;
+  --key-op-text: #ffffff;
+  --key-eq-bg: #d9892b;
+  --key-eq-text: #1f1507;
+  --focus: #1b6ef3;
+  --key-shadow: #b9b4a8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-bg: #14191b;
+    --body-text: #e8ebe9;
+    --shell: #1d2629;
+    --display-bg: #a9b9a2;
+    --key-bg: #2c383c;
+    --key-text: #eef1ef;
+    --key-fn-bg: #3d4b50;
+    --key-op-bg: #4a808a;
+    --key-shadow: #0f1517;
+    --focus: #7fb0ff;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: var(--body-bg);
+  color: var(--body-text);
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+}
+
+.calculator {
+  width: 100%;
+  max-width: 340px;
+  padding: 18px;
+  background: var(--shell);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+
+.display {
+  min-height: 108px;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  background: var(--display-bg);
+  color: var(--display-text);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.18);
+}
+
+.display-history {
+  min-height: 1.3em;
+  color: var(--display-muted);
+  font-size: 0.95rem;
+  word-break: break-all;
+  text-align: right;
+}
+
+.display-current {
+  font-family: "Courier New", ui-monospace, monospace;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: right;
+  word-break: break-all;
+}
+
+.display-current.small {
+  font-size: 1.6rem;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.key {
+  padding: 16px 0;
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--key-text);
+  background: var(--key-bg);
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 0 var(--key-shadow);
+  cursor: pointer;
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
+}
+
+.key:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--key-shadow);
+}
+
+.key:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.key-fn {
+  background: var(--key-fn-bg);
+}
+
+.key-op {
+  background: var(--key-op-bg);
+  color: var(--key-op-text);
+}
+
+.key-equals {
+  background: var(--key-eq-bg);
+  color: var(--key-eq-text);
+}
+
+.key-zero {
+  grid-column: span 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .key {
+    transition: none;
+  }
+}
